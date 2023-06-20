@@ -1,25 +1,41 @@
 {
+  //  https://www.typescriptlang.org/tsconfig
   "compilerOptions": {
-    "target": "ES2020",
-    "useDefineForClassFields": true,
-    "lib": ["ES2020", "DOM", "DOM.Iterable"],
-    "module": "ESNext",
-    "skipLibCheck": true,
-
+    "target": "ESNext", // 指定 ts 被 编译为 ES 的版本, ESNext 为最新的版本
+    "useDefineForClassFields": true, // 使用定义类字段
+    "allowJs": false, // 允许 JavaScript 文件在你的工程中被引入
+    "allowSyntheticDefaultImports": true, // 允许合成默认导入
+    "forceConsistentCasingInFileNames": true, // typeScript遵循其运行的文件系统的区分大小写规则
+    "lib": [
+      "ESNext",
+      "DOM",
+      "DOM.Iterable"
+    ], // 编译过程中需要引入的库文件列表
+    "module": "ESNext", // 指定的模块化规范
+    "skipLibCheck": true, // 忽略所有的声明文件 (.d.ts) 的类型检查
     /* Bundler mode */
-    "moduleResolution": "bundler",
-    "allowImportingTsExtensions": true,
-    "resolveJsonModule": true,
-    "isolatedModules": true,
-    "noEmit": true,
-    "jsx": "react-jsx",
-
+    "moduleResolution": "Node", // 指定模块的解析策略
+    "resolveJsonModule": true, // 解析 JSON 模块
+    "isolatedModules": true, // 将每个文件作为单独的模块
+    "noEmit": true, // 不生成输出文件（只执行编译过程）
+    "jsx": "react-jsx", // 控制 JSX 在 JavaScript 文件中的输出方式
     /* Linting */
-    "strict": true,
-    "noUnusedLocals": true,
-    "noUnusedParameters": true,
-    "noFallthroughCasesInSwitch": true
+    "strict": true, // 开启所有严格模式
+    "noUnusedLocals": true, // 报告未使用的局部变量的错误
+    "noUnusedParameters": true, // 未使用的参数
+    "noFallthroughCasesInSwitch": true, // 在switch语句中报告失败情况的错误。确保switch语句中的任何非空大小写都包括break、return或throw
+    "baseUrl": "./", // 解析非相对模块名的基准目录
+    "paths": {
+      "@": [
+        "src"
+      ],
+      "@/*": [
+        "src/*"
+      ]
+    }, // 模块名到基于 baseUrl 的路径映射的列表
   },
-  "include": ["src"],
-  "references": [{ "path": "./tsconfig.node.json" }]
+  "include": [
+    "src"
+  ], // * 需要被编译的文件目录
+  "exclude": [] // * 不需要被编译的文件目录
 }
